@@ -227,3 +227,15 @@ Received Import Request.
 Start importing Assets/InputSystem_Actions.inputactions using Guid(052faaac586de48259a63d0c4782560b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '11203590c78985956de4441220bf2db3') in 0.14314 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 20
 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 67.89 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 15 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 15 unused Assets / (1.9 MB). Loaded Objects now: 8088.
+Memory consumption went from 131.7 MB to 129.8 MB.
+Total: 170.912400 ms (FindLiveObjects: 3.392700 ms CreateObjectMapping: 0.832700 ms MarkObjects: 165.576300 ms  DeleteObjects: 1.096900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  colorSpace: 0 -> 1
