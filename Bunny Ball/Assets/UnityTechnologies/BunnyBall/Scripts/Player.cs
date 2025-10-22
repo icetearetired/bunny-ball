@@ -7,12 +7,17 @@ public class Player : MonoBehaviour
     public Rigidbody rb;
     public Transform cameraTransform;
     public GameManager gameManager;
-    public float speed = 10f;
+    public int speed = 10;
+    public int x = 0;
 
     void Update()
     {
+        x = x + 1;
+        Debug.Log(message: "Hello from " + x);
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
         forward.y = 0;
