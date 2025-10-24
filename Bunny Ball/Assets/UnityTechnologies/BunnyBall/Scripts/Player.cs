@@ -8,12 +8,13 @@ public class Player : MonoBehaviour
     public Transform cameraTransform;
     public GameManager gameManager;
     public int speed = 10;
-    public int x = 0;
+    public int jumpForce = 400;
+    private int x = 0;
 
     void Update()
     {
         x = x + 1;
-        Debug.Log(message: "Hello from " + x);
+       // Debug.Log(message: "Hello from " + x);
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
@@ -26,6 +27,12 @@ public class Player : MonoBehaviour
         right.Normalize();
         Vector3 direction = forward * moveVertical + right * moveHorizontal;
         rb.AddForce(direction * speed);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("pressed space");
+            rb.AddForce(Vector3.up * jumpForce);
+        }
     }
 
 }
