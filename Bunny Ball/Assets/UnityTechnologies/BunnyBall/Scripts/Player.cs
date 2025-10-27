@@ -9,12 +9,14 @@ public class Player : MonoBehaviour
     public GameManager gameManager;
     public int speed = 10;
     public int jumpForce = 400;
+    public float accelerationMultiplier = 0.3f;
     private int x = 0;
+    private bool isGrounded = false;
 
     void Update()
     {
         x = x + 1;
-       // Debug.Log(message: "Hello from " + x);
+        // Debug.Log(message: "Hello from " + x);
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
@@ -26,13 +28,28 @@ public class Player : MonoBehaviour
         forward.Normalize();
         right.Normalize();
         Vector3 direction = forward * moveVertical + right * moveHorizontal;
-        rb.AddForce(direction * speed);
+        rb.AddForce(direction * speed * accelerationMultiplier);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
             Debug.Log("pressed space");
             rb.AddForce(Vector3.up * jumpForce);
         }
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
 }
