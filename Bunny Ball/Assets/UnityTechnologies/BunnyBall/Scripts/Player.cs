@@ -7,10 +7,11 @@ public class Player : MonoBehaviour
     public Rigidbody rb;
     public Transform cameraTransform;
     public GameManager gameManager;
-    public float acceleration = 20f;
-    public float maxSpeed = 10f;
+    public int speed = 10;
     public int jumpForce = 400;
+    public float accelerationMultiplier = 0.3f;
     private int x = 0;
+    private bool isGrounded = false;
 
     void Update()
     {
@@ -27,22 +28,28 @@ public class Player : MonoBehaviour
         forward.Normalize();
         right.Normalize();
         Vector3 direction = forward * moveVertical + right * moveHorizontal;
-        // Apply acceleration
-        if (direction.magnitude > 0)
-        {
-            rb.AddForce(direction * acceleration, ForceMode.Acceleration);
+        rb.AddForce(direction * speed * accelerationMultiplier);
 
-            // Limit top speed
-            if (rb.linearVelocity.magnitude > maxSpeed)
-            {
-                rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
             Debug.Log("pressed space");
             rb.AddForce(Vector3.up * jumpForce);
         }
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
 }
