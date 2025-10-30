@@ -9588,7 +9588,7 @@ PrefabInstance:
     - target: {fileID: 7443251220583942649, guid: f757b320558b7984c96b025d56b0fd51,
         type: 3}
       propertyPath: speed
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7443251220583942649, guid: f757b320558b7984c96b025d56b0fd51,
         type: 3}
@@ -9598,7 +9598,7 @@ PrefabInstance:
     - target: {fileID: 7443251220583942649, guid: f757b320558b7984c96b025d56b0fd51,
         type: 3}
       propertyPath: jumpForce
-      value: 250
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 7443251220583942649, guid: f757b320558b7984c96b025d56b0fd51,
         type: 3}
@@ -9623,7 +9623,7 @@ PrefabInstance:
     - target: {fileID: 7443251220583942649, guid: f757b320558b7984c96b025d56b0fd51,
         type: 3}
       propertyPath: accelerationMultiplier
-      value: 0.1
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: 7443251220583942650, guid: f757b320558b7984c96b025d56b0fd51,
         type: 3}
