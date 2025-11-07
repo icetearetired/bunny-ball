@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float accelerationMultiplier = 0.3f;
     private int x = 0;
     private bool isGrounded = false;
+    private bool doubleJump = false;
 
     void Update()
     {
@@ -34,6 +35,14 @@ public class Player : MonoBehaviour
         {
             Debug.Log("pressed space");
             rb.AddForce(Vector3.up * jumpForce);
+            doubleJump = true;
+        }
+
+        if (isGrounded == false && doubleJump == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("double jump");
+            rb.AddForce(Vector3.up * jumpForce);
+            doubleJump = false;
         }
     }
 
